@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import HomeRoute from "./components/HomeRoute";
 import Header from "./components/Header";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
@@ -14,12 +15,14 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <HomeRoute />
           </Route>
-          <Route path="/gifs/search" exact></Route>
-          <Route path="/gifs/:id/details" exact></Route>
-          <Route path="/gifs/favorites" exact></Route>
+          <Route path="/movie/:id" exact>
+            <MovieDetails />
+          </Route>
+          <Route path="" exact></Route>
+          <Route path="" exact></Route>
           <Route path="/">
             <Redirect to="/" />
           </Route>
