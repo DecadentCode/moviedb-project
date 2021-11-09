@@ -46,6 +46,7 @@ const FilterForm = () => {
 
   return (
     <form action="" className="FilterForm" onSubmit={submitHandler}>
+      <h2>Filters</h2>
       <label htmlFor="certification">
         Certification
         <select

@@ -9,10 +9,11 @@ const Header = () => {
         <Link to="/">Movies to chill to</Link>
       </h1>
       <div className="filters">
-        <p>Filters</p>
         <FilterForm />
       </div>
-      <p>Watchlist</p>
+      <Link to="/watchlist">
+        <p>Watchlist</p>
+      </Link>
     </div>
   );
 };
