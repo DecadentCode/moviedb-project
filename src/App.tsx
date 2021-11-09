@@ -8,6 +8,7 @@ import {
 import HomeRoute from "./components/HomeRoute";
 import Header from "./components/Header";
 import MovieDetails from "./components/MovieDetails";
+import Watchlist from "./components/Watchlist";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
           <Route path="/movie/:id" exact>
             <MovieDetails />
           </Route>
-          <Route path="" exact></Route>
+          <Route path="/watchlist" exact>
+            <Watchlist />
+          </Route>
           <Route path="" exact></Route>
           <Route path="/">
             <Redirect to="/" />

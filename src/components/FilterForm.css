@@ -1,0 +1,18 @@
+.FilterForm {
+  color: cornsilk;
+  font-weight: bold;
+  border: solid #0c569b 4px;
+}
+.FilterForm label {
+  margin: 12px;
+}
+.FilterForm select {
+  margin: 4px;
+}
+.FilterForm button {
+  background-color: #0c569b;
+  border: solid #0c569b 6px;
+}
+.FilterForm button:hover {
+  border: solid #42319b 6px;
+}

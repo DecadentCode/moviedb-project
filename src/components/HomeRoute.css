@@ -1,0 +1,8 @@
+.HomeRoute {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.HomeRoute h2 {
+  color: cornsilk;
+}
