@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Movie from "../models/Movie";
 import SingleMovie from "../models/SingleMovie";
 import { getMovieById } from "../services/MovieService";
 import "./MovieDetails.css";
@@ -25,6 +24,7 @@ const MovieDetails = () => {
       <MovieObject movie={movie!} />
       <p>{movie?.overview}</p>
       <p>{movie?.runtime}</p>
+      <p>{movie?.certification}</p>
     </div>
   );
 };

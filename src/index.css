@@ -1,4 +1,10 @@
+/* resets */
 body {
   margin: 0;
   padding: 0;
+}
+
+/* styling */
+body {
+  background-color: #8c70e1;
 }

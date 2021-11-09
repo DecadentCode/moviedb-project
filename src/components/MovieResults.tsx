@@ -3,14 +3,14 @@ import MovieObject from "./MovieObject";
 import "./MovieResults.css";
 
 interface Props {
-  movie: Movie[];
+  movies: Movie[];
 }
 
-const MovieResults = ({ movie }: Props) => {
+const MovieResults = ({ movies }: Props) => {
   return (
     <div className="MovieResults">
       <ul>
-        {movie.map((item) => (
+        {movies.map((item) => (
           <MovieObject key={item.id} movie={item} />
         ))}
       </ul>

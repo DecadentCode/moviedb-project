@@ -1,4 +1,13 @@
 .Header {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.Header h1,
+.Header p {
+  margin: 0;
+}
+.Header .filters {
+  text-align: center;
+  margin: 0;
 }
