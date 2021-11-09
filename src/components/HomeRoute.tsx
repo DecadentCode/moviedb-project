@@ -1,31 +1,41 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Movie from "../models/Movie";
-import { getTrendingMovies } from "../services/MovieService";
+import { getFilteredMovies, getTrendingMovies } from "../services/MovieService";
 import "./HomeRoute.css";
 import MovieResults from "./MovieResults";
 
 const HomeRoute = () => {
-  const [movies, setMovies] = useState<Movie[]>([
-    // {
-    //   adult: false,
-    //   genre_ids: [35, 27, 878],
-    //   id: 16296,
-    //   poster_path: "/AtMEp5pLpJr4wOMCxVezTKi2okL.jpg",
-    //   title: "Killer Klowns from Outer Space",
-    // },
-  ]);
-  //   const [searchterm, setSearchTerm] = useState("");
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const cert: string | null = new URLSearchParams(useLocation().search).get(
+    "cert"
+  );
+  const genre: string | null = new URLSearchParams(useLocation().search).get(
+    "genre"
+  );
+  const runLess: string | null = new URLSearchParams(useLocation().search).get(
+    "runLess"
+  );
+  const runGreat: string | null = new URLSearchParams(useLocation().search).get(
+    "runGreat"
+  );
 
   useEffect(() => {
-    getTrendingMovies().then((response) => {
-      setMovies(response.results);
-    });
-  }, []);
+    if (cert || genre || runLess || runGreat) {
+      getFilteredMovies(cert, genre, runLess, runGreat).then((response) => {
+        setMovies(response.results);
+      });
+    } else {
+      getTrendingMovies().then((response) => {
+        setMovies(response.results);
+      });
+    }
+  }, [cert, genre, runLess, runGreat]);
 
   return (
     <div className="HomeRoute">
       <h2>Movies</h2>
-      <MovieResults movie={movies} />
+      <MovieResults movies={movies} />
     </div>
   );
 };

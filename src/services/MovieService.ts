@@ -2,7 +2,6 @@ import axios from "axios";
 
 import MovieResponse from "../models/MovieResponse";
 import SingleMovie from "../models/SingleMovie";
-import SingleMovieResponse from "../models/SingleMovieResponse";
 
 const key: string | undefined = process.env.REACT_APP_MOVIE_KEY || "";
 
@@ -27,6 +26,31 @@ export const getMovieById = (id: string): Promise<SingleMovie> => {
     })
     .then((response) => {
       console.log(response.data);
+      return response.data;
+    });
+};
+
+// function for filtered movies
+export const getFilteredMovies = (
+  cert: string | null,
+  genre: string | null,
+  runLess: string | null,
+  runGreat: string | null
+): Promise<MovieResponse> => {
+  return axios
+    .get("https://api.themoviedb.org/3/discover/movie", {
+      params: {
+        api_key: key,
+        include_adult: false,
+        certification_country: "US",
+        region: "US",
+        certification: cert,
+        with_genres: genre,
+        "with_runtime.lte": runLess,
+        "with_runtime.gte": runGreat,
+      },
+    })
+    .then((response) => {
       return response.data;
     });
 };
