@@ -1,5 +1,4 @@
 import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
 import Movie from "../models/Movie";
 import "./MovieObject.css";
 
@@ -17,7 +16,6 @@ const MovieObject = ({ movie }: Props) => {
   return (
     <li className="MovieObject">
       <p>{movie?.title}</p>
-
       <img
         src={`https://www.themoviedb.org/t/p/w500${movie?.poster_path}`}
         alt="movie-poster"

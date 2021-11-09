@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Movie from "../models/Movie";
+import SingleMovie from "../models/SingleMovie";
 import { getMovieById } from "../services/MovieService";
 import "./MovieDetails.css";
 import MovieObject from "./MovieObject";
@@ -10,18 +11,20 @@ interface RouteParams {
 }
 
 const MovieDetails = () => {
-  const [movie, setMovie] = useState<Movie>();
+  const [movie, setMovie] = useState<SingleMovie>();
   let id = useParams<RouteParams>().id;
 
   useEffect(() => {
     getMovieById(id).then((response) => {
-      setMovie(response.results);
+      setMovie(response);
     });
   }, [id]);
 
   return (
     <div className="MovieDetails">
       <MovieObject movie={movie!} />
+      <p>{movie?.overview}</p>
+      <p>{movie?.runtime}</p>
     </div>
   );
 };

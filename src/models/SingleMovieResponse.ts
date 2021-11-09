@@ -1,5 +1,5 @@
-import Movie from "./Movie";
+import SingleMovie from "./SingleMovie";
 
 export default interface SingleMovieResponse {
-  results: Movie;
+  results: SingleMovie;
 }
