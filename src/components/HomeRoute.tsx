@@ -19,7 +19,6 @@ const HomeRoute = () => {
   useEffect(() => {
     getTrendingMovies().then((response) => {
       setMovies(response.results);
-      console.log(movies);
     });
   }, []);
 
