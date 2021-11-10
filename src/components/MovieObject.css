@@ -4,8 +4,35 @@
   align-items: center;
   list-style: none;
   font-size: 24px;
-  background-color: #0c569b;
+  background-color: #1d7d80;
   margin: 12px;
   padding: 12px;
-  border: solid #1e319b 4px;
+  border: solid #1e4d80 4px;
+  border-radius: 12px;
+  padding: 15px;
+}
+.MovieObject p {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  max-width: 500px;
+  font-family: "Limelight", cursive;
+}
+
+.MovieObject .watchlist {
+  color: red;
+}
+
+.MovieObject img:hover {
+  cursor: pointer;
+}
+
+.MovieObject img {
+  margin-top: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .MovieObject img {
+    width: 50vw;
+  }
 }

@@ -7,4 +7,5 @@ export default interface SingleMovie {
   runtime: number;
   overview: string;
   certification: string;
+  vote_average: number;
 }

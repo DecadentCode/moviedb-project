@@ -1,18 +1,29 @@
-.FilterForm {
+.FilterFormContainer {
   color: cornsilk;
   font-weight: bold;
-  border: solid #0c569b 4px;
+  border: solid #1d7d80 4px;
+  border-radius: 30px;
+}
+.FilterForm {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .FilterForm label {
+  font-size: 24px;
   margin: 12px;
 }
 .FilterForm select {
   margin: 4px;
 }
 .FilterForm button {
-  background-color: #0c569b;
-  border: solid #0c569b 6px;
+  background-color: #1d7d80;
+  border: solid #1d7d80 6px;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 24px;
+  padding: 6px;
+  margin-left: auto;
 }
 .FilterForm button:hover {
-  border: solid #42319b 6px;
+  border: solid #1f1d80 6px;
 }
