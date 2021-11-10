@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Movie from "../models/Movie";
 import { getFilteredMovies, getTrendingMovies } from "../services/MovieService";
 import "./HomeRoute.css";
@@ -13,29 +13,34 @@ const HomeRoute = () => {
   const genre: string | null = new URLSearchParams(useLocation().search).get(
     "genre"
   );
-  const runLess: string | null = new URLSearchParams(useLocation().search).get(
-    "runLess"
-  );
-  const runGreat: string | null = new URLSearchParams(useLocation().search).get(
-    "runGreat"
-  );
+  const voteAvgGreat: string | null = new URLSearchParams(
+    useLocation().search
+  ).get("voteAvgGreat");
+
+  const p: string | null = new URLSearchParams(useLocation().search).get("p");
 
   useEffect(() => {
-    if (cert || genre || runLess || runGreat) {
-      getFilteredMovies(cert, genre, runLess, runGreat).then((response) => {
+    if (cert || genre || voteAvgGreat) {
+      getFilteredMovies(cert, genre, voteAvgGreat).then((response) => {
         setMovies(response.results);
       });
     } else {
-      getTrendingMovies().then((response) => {
+      getTrendingMovies(p).then((response) => {
         setMovies(response.results);
       });
     }
-  }, [cert, genre, runLess, runGreat]);
-
+  }, [cert, genre, voteAvgGreat]);
+  const history = useHistory();
+  const page1 = () => {
+    history.push(`/p=1`);
+  };
   return (
     <div className="HomeRoute">
       <h2>Movies</h2>
       <MovieResults movies={movies} />
+      <button onClick={page1}>Page 1</button>
+      <button>Page 2</button>
+      <button>Page 3</button>
     </div>
   );
 };

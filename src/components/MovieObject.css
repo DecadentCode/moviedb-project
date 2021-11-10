@@ -12,11 +12,13 @@
   padding: 15px;
 }
 .MovieObject p {
+  color: cornsilk;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   max-width: 500px;
   font-family: "Limelight", cursive;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 .MovieObject .watchlist {
