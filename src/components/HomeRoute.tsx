@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Movie from "../models/Movie";
-import { getFilteredMovies, getTrendingMovies } from "../services/MovieService";
+import {
+  getFilteredMovies,
+  getSearchedMovies,
+  getTrendingMovies,
+} from "../services/MovieService";
 import "./HomeRoute.css";
 import MovieResults from "./MovieResults";
 
@@ -13,34 +17,32 @@ const HomeRoute = () => {
   const genre: string | null = new URLSearchParams(useLocation().search).get(
     "genre"
   );
-  const voteAvgGreat: string | null = new URLSearchParams(
+  const voteGreat: string | null = new URLSearchParams(
     useLocation().search
-  ).get("voteAvgGreat");
-
-  const p: string | null = new URLSearchParams(useLocation().search).get("p");
+  ).get("voteGreat");
+  const searchTerm: string | null = new URLSearchParams(
+    useLocation().search
+  ).get("search");
 
   useEffect(() => {
-    if (cert || genre || voteAvgGreat) {
-      getFilteredMovies(cert, genre, voteAvgGreat).then((response) => {
+    if (cert || genre || voteGreat) {
+      getFilteredMovies(cert, genre, voteGreat).then((response) => {
+        setMovies(response.results);
+      });
+    } else if (searchTerm) {
+      getSearchedMovies(searchTerm).then((response) => {
         setMovies(response.results);
       });
     } else {
-      getTrendingMovies(p).then((response) => {
+      getTrendingMovies().then((response) => {
         setMovies(response.results);
       });
     }
-  }, [cert, genre, voteAvgGreat]);
-  const history = useHistory();
-  const page1 = () => {
-    history.push(`/p=1`);
-  };
+  }, [cert, genre, voteGreat, searchTerm]);
   return (
     <div className="HomeRoute">
       <h2>Movies</h2>
       <MovieResults movies={movies} />
-      <button onClick={page1}>Page 1</button>
-      <button>Page 2</button>
-      <button>Page 3</button>
     </div>
   );
 };

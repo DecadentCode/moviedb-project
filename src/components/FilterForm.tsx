@@ -5,7 +5,7 @@ import "./FilterForm.css";
 const FilterForm = () => {
   const [certInput, setCertInput] = useState("");
   const [genreInput, setGenreInput] = useState("");
-  const [voteAvgGreat, setVoteAvgGreat] = useState(NaN);
+  const [voteGreat, setVoteGreat] = useState(NaN);
 
   const history = useHistory();
 
@@ -18,32 +18,32 @@ const FilterForm = () => {
     if (genreInput) {
       filterURL += `&genre=${genreInput}`;
     }
-    if (voteAvgGreat) {
-      filterURL += `&voteAvgGreat=${voteAvgGreat}`;
+    if (voteGreat) {
+      filterURL += `&voteGreat=${voteGreat}`;
     }
     history.push(`/?${filterURL}`);
   };
 
   const voteHandler = (rating: string) => {
     if (rating === "1star") {
-      setVoteAvgGreat(1);
+      setVoteGreat(0);
     } else if (rating === "2star") {
-      setVoteAvgGreat(3);
+      setVoteGreat(2);
     } else if (rating === "3star") {
-      setVoteAvgGreat(5);
+      setVoteGreat(4);
     } else if (rating === "4star") {
-      setVoteAvgGreat(7);
+      setVoteGreat(6);
     } else if (rating === "5star") {
-      setVoteAvgGreat(8);
+      setVoteGreat(8);
     } else {
-      setVoteAvgGreat(NaN);
+      setVoteGreat(NaN);
     }
   };
 
   return (
     <div className="FilterFormContainer">
       <h2>Filters</h2>
-      <form action="" className="FilterForm" onSubmit={submitHandler}>
+      <form className="FilterForm" onSubmit={submitHandler}>
         <label htmlFor="certification">
           Certification
           <select

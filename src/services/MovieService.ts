@@ -5,12 +5,11 @@ import SingleMovie from "../models/SingleMovie";
 
 const key: string | undefined = process.env.REACT_APP_MOVIE_KEY || "";
 
-export const getTrendingMovies = (p: string | null): Promise<MovieResponse> => {
+export const getTrendingMovies = (): Promise<MovieResponse> => {
   return axios
     .get("https://api.themoviedb.org/3/trending/movie/week", {
       params: {
         api_key: key,
-        page: p,
       },
     })
     .then((response) => {
@@ -35,7 +34,7 @@ export const getMovieById = (id: string): Promise<SingleMovie> => {
 export const getFilteredMovies = (
   cert: string | null,
   genre: string | null,
-  voteAvgGreat: string | null
+  voteGreat: string | null
 ): Promise<MovieResponse> => {
   return axios
     .get("https://api.themoviedb.org/3/discover/movie", {
@@ -50,7 +49,23 @@ export const getFilteredMovies = (
 
         certification: cert,
         with_genres: genre,
-        "vote_average.gte": voteAvgGreat,
+        "vote_average.gte": voteGreat,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
+};
+
+// function for searched movies
+export const getSearchedMovies = (
+  searchTerm: string | null
+): Promise<MovieResponse> => {
+  return axios
+    .get("https://api.themoviedb.org/3/search/movie", {
+      params: {
+        api_key: key,
+        query: searchTerm,
       },
     })
     .then((response) => {

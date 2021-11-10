@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import FilterForm from "./FilterForm";
 import "./Header.css";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -11,8 +12,11 @@ const Header = () => {
       <div className="filters">
         <FilterForm />
       </div>
+      <div className="searchBar">
+        <SearchBar />
+      </div>
       <Link to="/watchlist">
-        <p>Watchlist</p>
+        <h2>Watchlist</h2>
       </Link>
     </div>
   );
