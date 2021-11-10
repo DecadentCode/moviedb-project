@@ -5,8 +5,7 @@ import "./FilterForm.css";
 const FilterForm = () => {
   const [certInput, setCertInput] = useState("");
   const [genreInput, setGenreInput] = useState("");
-  const [runtimeLesserInput, setRuntimeLesserInput] = useState(NaN);
-  const [runtimeGreaterInput, setRuntimeGreaterInput] = useState(NaN);
+  const [voteAvgGreat, setVoteAvgGreat] = useState(NaN);
 
   const history = useHistory();
 
@@ -19,28 +18,25 @@ const FilterForm = () => {
     if (genreInput) {
       filterURL += `&genre=${genreInput}`;
     }
-    if (runtimeLesserInput) {
-      filterURL += `&runLess=${runtimeLesserInput}`;
-    }
-    if (runtimeGreaterInput) {
-      filterURL += `&runGreat=${runtimeGreaterInput}`;
+    if (voteAvgGreat) {
+      filterURL += `&voteAvgGreat=${voteAvgGreat}`;
     }
     history.push(`/?${filterURL}`);
   };
 
-  const runtimeHandler = (duration: string) => {
-    if (duration === "short") {
-      setRuntimeLesserInput(90);
-      setRuntimeGreaterInput(NaN);
-    } else if (duration === "medium") {
-      setRuntimeLesserInput(120);
-      setRuntimeGreaterInput(90);
-    } else if (duration === "long") {
-      setRuntimeGreaterInput(120);
-      setRuntimeLesserInput(NaN);
+  const voteHandler = (rating: string) => {
+    if (rating === "1star") {
+      setVoteAvgGreat(1);
+    } else if (rating === "2star") {
+      setVoteAvgGreat(3);
+    } else if (rating === "3star") {
+      setVoteAvgGreat(5);
+    } else if (rating === "4star") {
+      setVoteAvgGreat(7);
+    } else if (rating === "5star") {
+      setVoteAvgGreat(8);
     } else {
-      setRuntimeLesserInput(NaN);
-      setRuntimeGreaterInput(NaN);
+      setVoteAvgGreat(NaN);
     }
   };
 
@@ -64,16 +60,18 @@ const FilterForm = () => {
         </label>
 
         <label htmlFor="length">
-          Length
+          User Rating
           <select
-            name="length"
-            id="length"
-            onChange={(e) => runtimeHandler(e.target.value)}
+            name="rating"
+            id="rating"
+            onChange={(e) => voteHandler(e.target.value)}
           >
             <option value="">Any</option>
-            <option value="short">Less than 90 minutes</option>
-            <option value="medium">Between 90 and 120 minutes</option>
-            <option value="long">Over 120 minutes</option>
+            <option value="1star">★</option>
+            <option value="2star">★★</option>
+            <option value="3star">★★★</option>
+            <option value="4star">★★★★</option>
+            <option value="5star">★★★★★</option>
           </select>
         </label>
 

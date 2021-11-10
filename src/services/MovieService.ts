@@ -5,11 +5,12 @@ import SingleMovie from "../models/SingleMovie";
 
 const key: string | undefined = process.env.REACT_APP_MOVIE_KEY || "";
 
-export const getTrendingMovies = (): Promise<MovieResponse> => {
+export const getTrendingMovies = (p: string | null): Promise<MovieResponse> => {
   return axios
     .get("https://api.themoviedb.org/3/trending/movie/week", {
       params: {
         api_key: key,
+        page: p,
       },
     })
     .then((response) => {
@@ -34,11 +35,7 @@ export const getMovieById = (id: string): Promise<SingleMovie> => {
 export const getFilteredMovies = (
   cert: string | null,
   genre: string | null,
-  // runLess: string | null,
-  // runGreat: string | null,
-  voteGreat: string | null,
-  voteAverageLess: string | null,
-  voteAverageGreat: string | null
+  voteAvgGreat: string | null
 ): Promise<MovieResponse> => {
   return axios
     .get("https://api.themoviedb.org/3/discover/movie", {
@@ -47,13 +44,13 @@ export const getFilteredMovies = (
         include_adult: false,
         certification_country: "US",
         region: "US",
+        "vote_count.gte": 50,
+        sort_by: "vote_average.asc",
+        page: 5,
+
         certification: cert,
         with_genres: genre,
-        // "with_runtime.lte": runLess,
-        // "with_runtime.gte": runGreat,
-        "vote_count.gte": voteGreat,
-        "vote_average.lte": voteAverageLess,
-        "vote_average.gte": voteAverageGreat,
+        "vote_average.gte": voteAvgGreat,
       },
     })
     .then((response) => {
