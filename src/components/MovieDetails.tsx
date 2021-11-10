@@ -19,12 +19,32 @@ const MovieDetails = () => {
     });
   }, [id]);
 
+  // let number: number | undefined = movie?.runtime;
+
+  // const setRuntime = (movie?.runtime) => {
+  //   let hours = Math.floor((movie?.runtime!) / 60);
+  //   let minutes = movie?.runtime! % 60;
+  //   return `${hours} : ${minutes}`;
+  // };
+
+  const movieRuntime: number | undefined = movie?.runtime;
+  const setRunTime = (time: number | undefined) => {
+    if (time) {
+      const hours = Math.trunc(time / 60);
+      const minutes = time % 60;
+      return `${hours} hours, ${minutes} minutes`;
+    }
+  };
+
   return (
     <div className="MovieDetails">
       <MovieObject movie={movie!} />
-      <p>{movie?.overview}</p>
-      <p>{movie?.runtime}</p>
-      <p>{movie?.certification}</p>
+
+      <p id="description">
+        Runtime: {setRunTime(movieRuntime)}
+        <br /> Description:
+        {movie?.overview}
+      </p>
     </div>
   );
 };
