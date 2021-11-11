@@ -12,17 +12,18 @@ import MovieResults from "./MovieResults";
 const HomeRoute = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const cert: string | null = new URLSearchParams(useLocation().search).get(
-    "cert"
+    "certInput"
   );
   const genre: string | null = new URLSearchParams(useLocation().search).get(
-    "genre"
+    "genreInput"
   );
   const voteGreat: string | null = new URLSearchParams(
     useLocation().search
   ).get("voteGreat");
+
   const searchTerm: string | null = new URLSearchParams(
     useLocation().search
-  ).get("search");
+  ).get("searchTerm");
 
   useEffect(() => {
     if (cert || genre || voteGreat) {

@@ -7,21 +7,18 @@ const SearchBar = () => {
 
   const history = useHistory();
 
-  const submitHandler = (event: FormEvent): void => {
-    event.preventDefault();
-    let searchURL = "";
-    if (searchTerm) {
-      searchURL += `&search=${searchTerm}`;
-    }
-    history.push(`/?${searchURL}`);
+  const submitHandler = (e: FormEvent): void => {
+    e.preventDefault();
+    history.push(
+      `/?${new URLSearchParams({
+        ...(searchTerm ? { searchTerm } : {}),
+      })}`
+    );
   };
 
   return (
     <div className="SearchBarContainer">
       <form className="SearchBar" onSubmit={submitHandler}>
-        <label htmlFor="search">
-          <h2>Search</h2>
-        </label>
         <input
           type="text"
           name="search"

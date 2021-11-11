@@ -25,7 +25,9 @@
   font-family: "Limelight", cursive;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
-
+.MovieObject .title {
+  font-size: 36px;
+}
 .MovieObject .watchlist {
   color: #801f1d;
 }
@@ -48,10 +50,4 @@
   align-items: center;
   justify-content: space-between;
   width: 500px;
-}
-
-@media only screen and (max-width: 768px) {
-  .MovieObject img {
-    width: 50vw;
-  }
 }

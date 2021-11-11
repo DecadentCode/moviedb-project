@@ -21,7 +21,7 @@ const MovieObject = ({ movie }: Props) => {
   return (
     <li className="MovieObjectContainer">
       <div className="MovieObject">
-        <p>{movie?.title}</p>
+        <p className="title">{movie?.title}</p>
         <img
           src={`https://www.themoviedb.org/t/p/w500${movie?.poster_path}`}
           alt="movie-poster"

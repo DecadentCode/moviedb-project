@@ -5,44 +5,39 @@ import "./FilterForm.css";
 const FilterForm = () => {
   const [certInput, setCertInput] = useState("");
   const [genreInput, setGenreInput] = useState("");
-  const [voteGreat, setVoteGreat] = useState(NaN);
+  const [voteGreat, setVoteGreat] = useState("");
 
   const history = useHistory();
 
-  const submitHandler = (event: FormEvent): void => {
-    event.preventDefault();
-    let filterURL = "";
-    if (certInput) {
-      filterURL += `&cert=${certInput}`;
-    }
-    if (genreInput) {
-      filterURL += `&genre=${genreInput}`;
-    }
-    if (voteGreat) {
-      filterURL += `&voteGreat=${voteGreat}`;
-    }
-    history.push(`/?${filterURL}`);
+  const submitHandler = (e: FormEvent): void => {
+    e.preventDefault();
+    history.push(
+      `/?${new URLSearchParams({
+        ...(certInput ? { certInput } : {}),
+        ...(genreInput ? { genreInput } : {}),
+        ...(voteGreat ? { voteGreat } : {}),
+      })}`
+    );
   };
 
   const voteHandler = (rating: string) => {
     if (rating === "1star") {
-      setVoteGreat(1);
+      setVoteGreat("1");
     } else if (rating === "2star") {
-      setVoteGreat(2);
+      setVoteGreat("2");
     } else if (rating === "3star") {
-      setVoteGreat(4);
+      setVoteGreat("4");
     } else if (rating === "4star") {
-      setVoteGreat(6);
+      setVoteGreat("6");
     } else if (rating === "5star") {
-      setVoteGreat(8);
+      setVoteGreat("8");
     } else {
-      setVoteGreat(NaN);
+      setVoteGreat("");
     }
   };
 
   return (
     <div className="FilterFormContainer">
-      <h2>Filters</h2>
       <form className="FilterForm" onSubmit={submitHandler}>
         <label htmlFor="certification">
           Certification
