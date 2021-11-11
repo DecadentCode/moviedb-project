@@ -19,23 +19,25 @@ const MovieObject = ({ movie }: Props) => {
     useContext(WatchlistContext);
 
   return (
-    <li className="MovieObject">
-      <p>{movie?.title}</p>
-      <img
-        src={`https://www.themoviedb.org/t/p/w500${movie?.poster_path}`}
-        alt="movie-poster"
-        onClick={() => seeDetails(movie?.id)}
-      />
-      <div className="movieDetails">
-        <p className="rating">Rating: {movie?.vote_average}</p>
-        {!isWatch(movie?.id) ? (
-          <i className="fas fa-clock" onClick={() => addWatchlist(movie)}></i>
-        ) : (
-          <i
-            className="fas fa-clock watchlist"
-            onClick={() => removeWatchlist(movie?.id)}
-          ></i>
-        )}
+    <li className="MovieObjectContainer">
+      <div className="MovieObject">
+        <p>{movie?.title}</p>
+        <img
+          src={`https://www.themoviedb.org/t/p/w500${movie?.poster_path}`}
+          alt="movie-poster"
+          onClick={() => seeDetails(movie?.id)}
+        />
+        <div className="movieDetails">
+          <p className="rating">Rating: {movie?.vote_average}</p>
+          {!isWatch(movie?.id) ? (
+            <i className="fas fa-clock" onClick={() => addWatchlist(movie)}></i>
+          ) : (
+            <i
+              className="fas fa-clock watchlist"
+              onClick={() => removeWatchlist(movie?.id)}
+            ></i>
+          )}
+        </div>
       </div>
     </li>
   );

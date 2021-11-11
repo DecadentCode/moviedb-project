@@ -2,10 +2,8 @@
   display: flex;
   justify-content: space-around;
 }
-.MovieObject {
+.MovieObjectContainer {
   display: flex;
-  /* width: 50%;
-  height: 50%; */
   flex: 2;
 }
 

@@ -1,8 +1,11 @@
+.MovieObjectContainer,
 .MovieObject {
   display: flex;
   flex-direction: column;
   align-items: center;
   list-style: none;
+}
+.MovieObject {
   font-size: 24px;
   background-color: #1d7d80;
   margin: 12px;
@@ -11,6 +14,7 @@
   border-radius: 12px;
   padding: 15px;
   width: 500px;
+  height: 100%;
 }
 .MovieObject p {
   color: cornsilk;
