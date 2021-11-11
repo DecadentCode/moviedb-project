@@ -10,6 +10,7 @@
   border: solid #1e4d80 4px;
   border-radius: 12px;
   padding: 15px;
+  width: 500px;
 }
 .MovieObject p {
   color: cornsilk;
@@ -25,12 +26,12 @@
   color: red;
 }
 
-.MovieObject img:hover {
-  cursor: pointer;
-}
-
 .MovieObject img {
   margin-top: auto;
+  width: 500px;
+}
+.MovieObject img:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
