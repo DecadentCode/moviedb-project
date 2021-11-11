@@ -5,6 +5,7 @@
   border-top: none;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  font-family: "Open Sans", sans-serif;
 }
 .SearchBar {
   display: flex;

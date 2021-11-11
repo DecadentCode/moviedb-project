@@ -45,7 +45,6 @@ export const getFilteredMovies = (
         region: "US",
         "vote_count.gte": 50,
         sort_by: "vote_average.asc",
-        page: 5,
 
         certification: cert,
         with_genres: genre,

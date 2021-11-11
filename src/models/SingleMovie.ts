@@ -8,4 +8,5 @@ export default interface SingleMovie {
   overview: string;
   certification: string;
   vote_average: number;
+  release_date: string;
 }

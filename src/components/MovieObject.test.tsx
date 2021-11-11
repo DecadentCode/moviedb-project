@@ -10,6 +10,7 @@ test("renders movie to page", () => {
         adult: false,
         genre_ids: [1, 2, 3],
         poster_path: "www.image.com",
+        vote_average: 32,
       }}
     />
   );
@@ -26,6 +27,7 @@ test("the root element has a class of MovieObject", () => {
         adult: false,
         genre_ids: [1, 2, 3],
         poster_path: "www.image.com",
+        vote_average: 32,
       }}
     />
   );
@@ -33,18 +35,19 @@ test("the root element has a class of MovieObject", () => {
   expect(componentElement).toHaveClass("MovieObject");
 });
 
-// test("the root element has a class of watchlist", () => {
-//   const { container } = render(
-//     <MovieObject
-//       movie={{
-//         id: 123,
-//         title: "abc123",
-//         adult: false,
-//         genre_ids: [1, 2, 3],
-//         poster_path: "www.image.com",
-//       }}
-//     />
-//   );
-//   const i = container.firstChild;
-//   expect(i).toHaveClass("watchlist");
-// });
+test("the root element has a class of watchlist", () => {
+  const { container } = render(
+    <MovieObject
+      movie={{
+        id: 123,
+        title: "abc123",
+        adult: false,
+        genre_ids: [1, 2, 3],
+        poster_path: "www.image.com",
+        vote_average: 32,
+      }}
+    />
+  );
+  const i = container.firstChild;
+  expect(i).toHaveClass("MovieObject");
+});

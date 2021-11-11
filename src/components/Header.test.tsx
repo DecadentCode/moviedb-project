@@ -21,3 +21,13 @@ test("renders link with the text watchlist", () => {
   const linkElement = screen.getByRole("link", { name: "Watchlist" });
   expect(linkElement).toBeInTheDocument();
 });
+
+test("div has classname of header", () => {
+  const { container } = render(
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>
+  );
+  const i = container.firstChild;
+  expect(i).toHaveClass("Header");
+});

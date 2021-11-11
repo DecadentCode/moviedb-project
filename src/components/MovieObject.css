@@ -34,6 +34,10 @@
   cursor: pointer;
 }
 
+.MovieObject .rating {
+  font-family: "Open Sans", sans-serif;
+}
+
 @media only screen and (max-width: 768px) {
   .MovieObject img {
     width: 50vw;

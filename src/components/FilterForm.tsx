@@ -26,7 +26,7 @@ const FilterForm = () => {
 
   const voteHandler = (rating: string) => {
     if (rating === "1star") {
-      setVoteGreat(0);
+      setVoteGreat(1);
     } else if (rating === "2star") {
       setVoteGreat(2);
     } else if (rating === "3star") {

@@ -38,6 +38,8 @@ const MovieDetails = () => {
 
       <p id="description">
         Runtime: {setRunTime(movieRuntime)}
+        <br />
+        Release Date: {movie?.release_date}
         <br /> Description: {movie?.overview}
       </p>
     </div>

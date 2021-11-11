@@ -3,6 +3,7 @@
   font-weight: bold;
   border: solid #1d7d80 4px;
   border-radius: 30px;
+  font-family: "Open Sans", sans-serif;
 }
 .FilterForm {
   display: flex;

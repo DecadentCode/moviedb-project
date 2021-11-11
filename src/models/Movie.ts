@@ -4,4 +4,5 @@ export default interface Movie {
   adult: boolean;
   genre_ids: number[];
   poster_path: string;
+  vote_average: number;
 }
