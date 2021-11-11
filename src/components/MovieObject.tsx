@@ -26,16 +26,17 @@ const MovieObject = ({ movie }: Props) => {
         alt="movie-poster"
         onClick={() => seeDetails(movie?.id)}
       />
-      <p className="rating">Rating: {movie?.vote_average}</p>
-
-      {!isWatch(movie?.id) ? (
-        <i className="fas fa-clock" onClick={() => addWatchlist(movie)}></i>
-      ) : (
-        <i
-          className="fas fa-clock watchlist"
-          onClick={() => removeWatchlist(movie?.id)}
-        ></i>
-      )}
+      <div className="movieDetails">
+        <p className="rating">Rating: {movie?.vote_average}</p>
+        {!isWatch(movie?.id) ? (
+          <i className="fas fa-clock" onClick={() => addWatchlist(movie)}></i>
+        ) : (
+          <i
+            className="fas fa-clock watchlist"
+            onClick={() => removeWatchlist(movie?.id)}
+          ></i>
+        )}
+      </div>
     </li>
   );
 };

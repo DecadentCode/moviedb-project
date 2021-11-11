@@ -23,7 +23,7 @@
 }
 
 .MovieObject .watchlist {
-  color: red;
+  color: #801f1d;
 }
 
 .MovieObject img {
@@ -36,6 +36,14 @@
 
 .MovieObject .rating {
   font-family: "Open Sans", sans-serif;
+}
+
+.MovieObject .movieDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
 }
 
 @media only screen and (max-width: 768px) {
